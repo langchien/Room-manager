@@ -13,14 +13,40 @@ datasource db {
 }
 
 model Member {
-  STT       Int     @id
-  HoVaTen   String
-  Khoa      Int
-  Lop       String
-  MSSV      String  @unique
-  SDT       String
-  QueQuan   String
-  DiaChi    String
-  NgaySinh  String
-  SoTheCCCD String?
+  id          Int     @id @default(autoincrement())
+  numberOrder Int     @unique
+  studentID   String  @unique
+  fullName    String
+  major       String
+  class       String
+  phoneNumber String
+  homeTown    String
+  address     String
+  birthDate   String
+  cccd        String?
+
+  transactions RoomTransaction[]
+}
+
+enum TransationType {
+  GARBAGE
+  WATER
+}
+
+enum TransactionStatus {
+  PENDING
+  COMPLETED
+  CANCELLED
+}
+
+// Lịch sử đổ rác/ đổi nước uống
+model RoomTransaction {
+  id          Int               @id @default(autoincrement())
+  memberId    Int
+  type        TransationType
+  status      TransactionStatus @default(PENDING)
+  scheduledAt DateTime
+  createdAt   DateTime          @default(now())
+  note        String?
+  member      Member            @relation(fields: [memberId], references: [id])
 }

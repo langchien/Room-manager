@@ -1,17 +1,14 @@
-import { Member } from '@/types/member'
+import { Member } from '@/generated/prisma/client'
+import { prisma } from '@/lib/prisma'
 
 export const memberApi = {
-  getListMember: async () => {
-    const response = await fetch(
-      'https://raw.githubusercontent.com/langchien/Room-manager/refs/heads/main/data/members.json',
-      {
-        method: 'GET',
-        headers: {
-          'Content-Type': 'application/json',
-        },
+  getListMember: async (): Promise<Member[]> => {
+    return prisma.member.findMany({
+      orderBy: {
+        numberOrder: 'asc',
       },
-    )
-    const data = await response.json()
-    return data as Member[]
+    })
   },
 }
+
+

@@ -80,12 +80,12 @@ export type PrismaVersion = {
 }
 
 /**
- * Prisma Client JS version: 7.1.0
- * Query Engine version: ab635e6b9d606fa5c8fb8b1a7f909c3c3c1c98ba
+ * Prisma Client JS version: 7.8.0
+ * Query Engine version: 3c6e192761c0362d496ed980de936e2f3cebcd3a
  */
 export const prismaVersion: PrismaVersion = {
-  client: "7.1.0",
-  engine: "ab635e6b9d606fa5c8fb8b1a7f909c3c3c1c98ba"
+  client: "7.8.0",
+  engine: "3c6e192761c0362d496ed980de936e2f3cebcd3a"
 }
 
 /**
@@ -384,7 +384,8 @@ type FieldRefInputType<Model, FieldType> = Model extends never ? never : FieldRe
 
 
 export const ModelName = {
-  Member: 'Member'
+  Member: 'Member',
+  RoomTransaction: 'RoomTransaction'
 } as const
 
 export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -400,7 +401,7 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
     omit: GlobalOmitOptions
   }
   meta: {
-    modelProps: "member"
+    modelProps: "member" | "roomTransaction"
     txIsolationLevel: TransactionIsolationLevel
   }
   model: {
@@ -478,6 +479,80 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
         }
       }
     }
+    RoomTransaction: {
+      payload: Prisma.$RoomTransactionPayload<ExtArgs>
+      fields: Prisma.RoomTransactionFieldRefs
+      operations: {
+        findUnique: {
+          args: Prisma.RoomTransactionFindUniqueArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$RoomTransactionPayload> | null
+        }
+        findUniqueOrThrow: {
+          args: Prisma.RoomTransactionFindUniqueOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$RoomTransactionPayload>
+        }
+        findFirst: {
+          args: Prisma.RoomTransactionFindFirstArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$RoomTransactionPayload> | null
+        }
+        findFirstOrThrow: {
+          args: Prisma.RoomTransactionFindFirstOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$RoomTransactionPayload>
+        }
+        findMany: {
+          args: Prisma.RoomTransactionFindManyArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$RoomTransactionPayload>[]
+        }
+        create: {
+          args: Prisma.RoomTransactionCreateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$RoomTransactionPayload>
+        }
+        createMany: {
+          args: Prisma.RoomTransactionCreateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        createManyAndReturn: {
+          args: Prisma.RoomTransactionCreateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$RoomTransactionPayload>[]
+        }
+        delete: {
+          args: Prisma.RoomTransactionDeleteArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$RoomTransactionPayload>
+        }
+        update: {
+          args: Prisma.RoomTransactionUpdateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$RoomTransactionPayload>
+        }
+        deleteMany: {
+          args: Prisma.RoomTransactionDeleteManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateMany: {
+          args: Prisma.RoomTransactionUpdateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateManyAndReturn: {
+          args: Prisma.RoomTransactionUpdateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$RoomTransactionPayload>[]
+        }
+        upsert: {
+          args: Prisma.RoomTransactionUpsertArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$RoomTransactionPayload>
+        }
+        aggregate: {
+          args: Prisma.RoomTransactionAggregateArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.AggregateRoomTransaction>
+        }
+        groupBy: {
+          args: Prisma.RoomTransactionGroupByArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.RoomTransactionGroupByOutputType>[]
+        }
+        count: {
+          args: Prisma.RoomTransactionCountArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.RoomTransactionCountAggregateOutputType> | number
+        }
+      }
+    }
   }
 } & {
   other: {
@@ -518,19 +593,33 @@ export type TransactionIsolationLevel = (typeof TransactionIsolationLevel)[keyof
 
 
 export const MemberScalarFieldEnum = {
-  STT: 'STT',
-  HoVaTen: 'HoVaTen',
-  Khoa: 'Khoa',
-  Lop: 'Lop',
-  MSSV: 'MSSV',
-  SDT: 'SDT',
-  QueQuan: 'QueQuan',
-  DiaChi: 'DiaChi',
-  NgaySinh: 'NgaySinh',
-  SoTheCCCD: 'SoTheCCCD'
+  id: 'id',
+  numberOrder: 'numberOrder',
+  studentID: 'studentID',
+  fullName: 'fullName',
+  major: 'major',
+  class: 'class',
+  phoneNumber: 'phoneNumber',
+  homeTown: 'homeTown',
+  address: 'address',
+  birthDate: 'birthDate',
+  cccd: 'cccd'
 } as const
 
 export type MemberScalarFieldEnum = (typeof MemberScalarFieldEnum)[keyof typeof MemberScalarFieldEnum]
+
+
+export const RoomTransactionScalarFieldEnum = {
+  id: 'id',
+  memberId: 'memberId',
+  type: 'type',
+  status: 'status',
+  scheduledAt: 'scheduledAt',
+  createdAt: 'createdAt',
+  note: 'note'
+} as const
+
+export type RoomTransactionScalarFieldEnum = (typeof RoomTransactionScalarFieldEnum)[keyof typeof RoomTransactionScalarFieldEnum]
 
 
 export const SortOrder = {
@@ -588,6 +677,48 @@ export type StringFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 
  * Reference to a field of type 'String[]'
  */
 export type ListStringFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'String[]'>
+    
+
+
+/**
+ * Reference to a field of type 'TransationType'
+ */
+export type EnumTransationTypeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'TransationType'>
+    
+
+
+/**
+ * Reference to a field of type 'TransationType[]'
+ */
+export type ListEnumTransationTypeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'TransationType[]'>
+    
+
+
+/**
+ * Reference to a field of type 'TransactionStatus'
+ */
+export type EnumTransactionStatusFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'TransactionStatus'>
+    
+
+
+/**
+ * Reference to a field of type 'TransactionStatus[]'
+ */
+export type ListEnumTransactionStatusFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'TransactionStatus[]'>
+    
+
+
+/**
+ * Reference to a field of type 'DateTime'
+ */
+export type DateTimeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'DateTime'>
+    
+
+
+/**
+ * Reference to a field of type 'DateTime[]'
+ */
+export type ListDateTimeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'DateTime[]'>
     
 
 
@@ -697,9 +828,25 @@ export type PrismaClientOptions = ({
    * ```
    */
   comments?: runtime.SqlCommenterPlugin[]
+  /**
+   * Optional maximum size for the query plan cache. If not provided, a default size will be used.
+   * A value of `0` can be used to disable the cache entirely. A higher cache size can improve
+   * performance for applications that execute a large number of unique queries, while a smaller
+   * cache size can reduce memory usage.
+   * 
+   * @example
+   * ```
+   * const prisma = new PrismaClient({
+   *   adapter,
+   *   queryPlanCacheMaxSize: 100,
+   * })
+   * ```
+   */
+  queryPlanCacheMaxSize?: number
 }
 export type GlobalOmitConfig = {
   member?: Prisma.MemberOmit
+  roomTransaction?: Prisma.RoomTransactionOmit
 }
 
 /* Types for Logging */

@@ -51,7 +51,8 @@ export const AnyNull = runtime.AnyNull
 
 
 export const ModelName = {
-  Member: 'Member'
+  Member: 'Member',
+  RoomTransaction: 'RoomTransaction'
 } as const
 
 export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -60,30 +61,44 @@ export type ModelName = (typeof ModelName)[keyof typeof ModelName]
  * Enums
  */
 
-export const TransactionIsolationLevel = {
+export const TransactionIsolationLevel = runtime.makeStrictEnum({
   ReadUncommitted: 'ReadUncommitted',
   ReadCommitted: 'ReadCommitted',
   RepeatableRead: 'RepeatableRead',
   Serializable: 'Serializable'
-} as const
+} as const)
 
 export type TransactionIsolationLevel = (typeof TransactionIsolationLevel)[keyof typeof TransactionIsolationLevel]
 
 
 export const MemberScalarFieldEnum = {
-  STT: 'STT',
-  HoVaTen: 'HoVaTen',
-  Khoa: 'Khoa',
-  Lop: 'Lop',
-  MSSV: 'MSSV',
-  SDT: 'SDT',
-  QueQuan: 'QueQuan',
-  DiaChi: 'DiaChi',
-  NgaySinh: 'NgaySinh',
-  SoTheCCCD: 'SoTheCCCD'
+  id: 'id',
+  numberOrder: 'numberOrder',
+  studentID: 'studentID',
+  fullName: 'fullName',
+  major: 'major',
+  class: 'class',
+  phoneNumber: 'phoneNumber',
+  homeTown: 'homeTown',
+  address: 'address',
+  birthDate: 'birthDate',
+  cccd: 'cccd'
 } as const
 
 export type MemberScalarFieldEnum = (typeof MemberScalarFieldEnum)[keyof typeof MemberScalarFieldEnum]
+
+
+export const RoomTransactionScalarFieldEnum = {
+  id: 'id',
+  memberId: 'memberId',
+  type: 'type',
+  status: 'status',
+  scheduledAt: 'scheduledAt',
+  createdAt: 'createdAt',
+  note: 'note'
+} as const
+
+export type RoomTransactionScalarFieldEnum = (typeof RoomTransactionScalarFieldEnum)[keyof typeof RoomTransactionScalarFieldEnum]
 
 
 export const SortOrder = {

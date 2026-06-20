@@ -17,18 +17,26 @@ import type * as Prisma from "./prismaNamespace"
 
 const config: runtime.GetPrismaClientConfig = {
   "previewFeatures": [],
-  "clientVersion": "7.1.0",
-  "engineVersion": "ab635e6b9d606fa5c8fb8b1a7f909c3c3c1c98ba",
+  "clientVersion": "7.8.0",
+  "engineVersion": "3c6e192761c0362d496ed980de936e2f3cebcd3a",
   "activeProvider": "postgresql",
-  "inlineSchema": "// This is your Prisma schema file,\n// learn more about it in the docs: https://pris.ly/d/prisma-schema\n\n// Get a free hosted Postgres database in seconds: `npx create-db`\n\ngenerator client {\n  provider = \"prisma-client\"\n  output   = \"../generated/prisma\"\n}\n\ndatasource db {\n  provider = \"postgresql\"\n}\n\nmodel Member {\n  STT       Int     @id\n  HoVaTen   String\n  Khoa      Int\n  Lop       String\n  MSSV      String  @unique\n  SDT       String\n  QueQuan   String\n  DiaChi    String\n  NgaySinh  String\n  SoTheCCCD String?\n}\n",
+  "inlineSchema": "// This is your Prisma schema file,\n// learn more about it in the docs: https://pris.ly/d/prisma-schema\n\n// Get a free hosted Postgres database in seconds: `npx create-db`\n\ngenerator client {\n  provider = \"prisma-client\"\n  output   = \"../generated/prisma\"\n}\n\ndatasource db {\n  provider = \"postgresql\"\n}\n\nmodel Member {\n  id          Int     @id @default(autoincrement())\n  numberOrder Int     @unique\n  studentID   String  @unique\n  fullName    String\n  major       String\n  class       String\n  phoneNumber String\n  homeTown    String\n  address     String\n  birthDate   String\n  cccd        String?\n\n  transactions RoomTransaction[]\n}\n\nenum TransationType {\n  GARBAGE\n  WATER\n}\n\nenum TransactionStatus {\n  PENDING\n  COMPLETED\n  CANCELLED\n}\n\n// Lịch sử đổ rác/ đổi nước uống\nmodel RoomTransaction {\n  id          Int               @id @default(autoincrement())\n  memberId    Int\n  type        TransationType\n  status      TransactionStatus @default(PENDING)\n  scheduledAt DateTime\n  createdAt   DateTime          @default(now())\n  note        String?\n  member      Member            @relation(fields: [memberId], references: [id])\n}\n",
   "runtimeDataModel": {
     "models": {},
     "enums": {},
     "types": {}
+  },
+  "parameterizationSchema": {
+    "strings": [],
+    "graph": ""
   }
 }
 
-config.runtimeDataModel = JSON.parse("{\"models\":{\"Member\":{\"fields\":[{\"name\":\"STT\",\"kind\":\"scalar\",\"type\":\"Int\"},{\"name\":\"HoVaTen\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"Khoa\",\"kind\":\"scalar\",\"type\":\"Int\"},{\"name\":\"Lop\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"MSSV\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"SDT\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"QueQuan\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"DiaChi\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"NgaySinh\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"SoTheCCCD\",\"kind\":\"scalar\",\"type\":\"String\"}],\"dbName\":null}},\"enums\":{},\"types\":{}}")
+config.runtimeDataModel = JSON.parse("{\"models\":{\"Member\":{\"fields\":[{\"name\":\"id\",\"kind\":\"scalar\",\"type\":\"Int\"},{\"name\":\"numberOrder\",\"kind\":\"scalar\",\"type\":\"Int\"},{\"name\":\"studentID\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"fullName\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"major\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"class\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"phoneNumber\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"homeTown\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"address\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"birthDate\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"cccd\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"transactions\",\"kind\":\"object\",\"type\":\"RoomTransaction\",\"relationName\":\"MemberToRoomTransaction\"}],\"dbName\":null},\"RoomTransaction\":{\"fields\":[{\"name\":\"id\",\"kind\":\"scalar\",\"type\":\"Int\"},{\"name\":\"memberId\",\"kind\":\"scalar\",\"type\":\"Int\"},{\"name\":\"type\",\"kind\":\"enum\",\"type\":\"TransationType\"},{\"name\":\"status\",\"kind\":\"enum\",\"type\":\"TransactionStatus\"},{\"name\":\"scheduledAt\",\"kind\":\"scalar\",\"type\":\"DateTime\"},{\"name\":\"createdAt\",\"kind\":\"scalar\",\"type\":\"DateTime\"},{\"name\":\"note\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"member\",\"kind\":\"object\",\"type\":\"Member\",\"relationName\":\"MemberToRoomTransaction\"}],\"dbName\":null}},\"enums\":{},\"types\":{}}")
+config.parameterizationSchema = {
+  strings: JSON.parse("[\"where\",\"orderBy\",\"cursor\",\"member\",\"transactions\",\"_count\",\"Member.findUnique\",\"Member.findUniqueOrThrow\",\"Member.findFirst\",\"Member.findFirstOrThrow\",\"Member.findMany\",\"data\",\"Member.createOne\",\"Member.createMany\",\"Member.createManyAndReturn\",\"Member.updateOne\",\"Member.updateMany\",\"Member.updateManyAndReturn\",\"create\",\"update\",\"Member.upsertOne\",\"Member.deleteOne\",\"Member.deleteMany\",\"having\",\"_avg\",\"_sum\",\"_min\",\"_max\",\"Member.groupBy\",\"Member.aggregate\",\"RoomTransaction.findUnique\",\"RoomTransaction.findUniqueOrThrow\",\"RoomTransaction.findFirst\",\"RoomTransaction.findFirstOrThrow\",\"RoomTransaction.findMany\",\"RoomTransaction.createOne\",\"RoomTransaction.createMany\",\"RoomTransaction.createManyAndReturn\",\"RoomTransaction.updateOne\",\"RoomTransaction.updateMany\",\"RoomTransaction.updateManyAndReturn\",\"RoomTransaction.upsertOne\",\"RoomTransaction.deleteOne\",\"RoomTransaction.deleteMany\",\"RoomTransaction.groupBy\",\"RoomTransaction.aggregate\",\"AND\",\"OR\",\"NOT\",\"id\",\"memberId\",\"TransationType\",\"type\",\"TransactionStatus\",\"status\",\"scheduledAt\",\"createdAt\",\"note\",\"equals\",\"in\",\"notIn\",\"lt\",\"lte\",\"gt\",\"gte\",\"contains\",\"startsWith\",\"endsWith\",\"not\",\"numberOrder\",\"studentID\",\"fullName\",\"major\",\"class\",\"phoneNumber\",\"homeTown\",\"address\",\"birthDate\",\"cccd\",\"every\",\"some\",\"none\",\"is\",\"isNot\",\"connectOrCreate\",\"upsert\",\"createMany\",\"set\",\"disconnect\",\"delete\",\"connect\",\"updateMany\",\"deleteMany\",\"increment\",\"decrement\",\"multiply\",\"divide\"]"),
+  graph: "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_ACAaAABCACAbAABCACA6AAAANgI7AAAANgg8AAAANghEAABBNiILBQAAPwAgGgAAQAAgGwAAQAAgOkAAAAABO0AAAAAEPEAAAAAEPUAAAAABPkAAAAABP0AAAAABQEAAAAABREAAPgAhDgUAADwAIBoAAD0AIBsAAD0AIDoBAAAAATsBAAAABTwBAAAABT0BAAAAAT4BAAAAAT8BAAAAAUABAAAAAUEBAAAAAUIBAAAAAUMBAAAAAUQBADsAIQ4FAAA8ACAaAAA9ACAbAAA9ACA6AQAAAAE7AQAAAAU8AQAAAAU9AQAAAAE-AQAAAAE_AQAAAAFAAQAAAAFBAQAAAAFCAQAAAAFDAQAAAAFEAQA7ACEIOgIAAAABOwIAAAAFPAIAAAAFPQIAAAABPgIAAAABPwIAAAABQAIAAAABRAIAPAAhCzoBAAAAATsBAAAABTwBAAAABT0BAAAAAT4BAAAAAT8BAAAAAUABAAAAAUEBAAAAAUIBAAAAAUMBAAAAAUQBAD0AIQsFAAA_ACAaAABAACAbAABAACA6QAAAAAE7QAAAAAQ8QAAAAAQ9QAAAAAE-QAAAAAE_QAAAAAFAQAAAAAFEQAA-ACEIOgIAAAABOwIAAAAEPAIAAAAEPQIAAAABPgIAAAABPwIAAAABQAIAAAABRAIAPwAhCDpAAAAAATtAAAAABDxAAAAABD1AAAAAAT5AAAAAAT9AAAAAAUBAAAAAAURAAEAAIQcFAAA_ACAaAABCACAbAABCACA6AAAANgI7AAAANgg8AAAANghEAABBNiIEOgAAADYCOwAAADYIPAAAADYIRAAAQjYiBwUAAD8AIBoAAEQAIBsAAEQAIDoAAAA0AjsAAAA0CDwAAAA0CEQAAEM0IgQ6AAAANAI7AAAANAg8AAAANAhEAABENCINBQAAPwAgGAAARgAgGQAAPwAgGgAAPwAgGwAAPwAgOgIAAAABOwIAAAAEPAIAAAAEPQIAAAABPgIAAAABPwIAAAABQAIAAAABRAIARQAhCDoIAAAAATsIAAAABDwIAAAABD0IAAAAAT4IAAAAAT8IAAAAAUAIAAAAAUQIAEYAIQ4uAABHADAvAAAcABAwAABHADAxAgA2ACFFAgA2ACFGAQBIACFHAQBIACFIAQBIACFJAQBIACFKAQBIACFLAQBIACFMAQBIACFNAQBIACFOAQA6ACEOBQAAPwAgGgAASgAgGwAASgAgOgEAAAABOwEAAAAEPAEAAAAEPQEAAAABPgEAAAABPwEAAAABQAEAAAABQQEAAAABQgEAAAABQwEAAAABRAEASQAhDgUAAD8AIBoAAEoAIBsAAEoAIDoBAAAAATsBAAAABDwBAAAABD0BAAAAAT4BAAAAAT8BAAAAAUABAAAAAUEBAAAAAUIBAAAAAUMBAAAAAUQBAEkAIQs6AQAAAAE7AQAAAAQ8AQAAAAQ9AQAAAAE-AQAAAAE_AQAAAAFAAQAAAAFBAQAAAAFCAQAAAAFDAQAAAAFEAQBKACEPBAAATwAgLgAASwAwLwAACQAQMAAASwAwMQIATAAhRQIATAAhRgEATQAhRwEATQAhSAEATQAhSQEATQAhSgEATQAhSwEATQAhTAEATQAhTQEATQAhTgEATgAhCDoCAAAAATsCAAAABDwCAAAABD0CAAAAAT4CAAAAAT8CAAAAAUACAAAAAUQCAD8AIQs6AQAAAAE7AQAAAAQ8AQAAAAQ9AQAAAAE-AQAAAAE_AQAAAAFAAQAAAAFBAQAAAAFCAQAAAAFDAQAAAAFEAQBKACELOgEAAAABOwEAAAAFPAEAAAAFPQEAAAABPgEAAAABPwEAAAABQAEAAAABQQEAAAABQgEAAAABQwEAAAABRAEAPQAhA08AAAMAIFAAAAMAIFEAAAMAIAsDAABUACAuAABQADAvAAADABAwAABQADAxAgBMACEyAgBMACE0AABRNCI2AABSNiI3QABTACE4QABTACE5AQBOACEEOgAAADQCOwAAADQIPAAAADQIRAAARDQiBDoAAAA2AjsAAAA2CDwAAAA2CEQAAEI2Igg6QAAAAAE7QAAAAAQ8QAAAAAQ9QAAAAAE-QAAAAAE_QAAAAAFAQAAAAAFEQABAACERBAAATwAgLgAASwAwLwAACQAQMAAASwAwMQIATAAhRQIATAAhRgEATQAhRwEATQAhSAEATQAhSQEATQAhSgEATQAhSwEATQAhTAEATQAhTQEATQAhTgEATgAhUgAACQAgUwAACQAgAAAAAAAAAVcAAAA0AgFXAAAANgIBV0AAAAABAVcBAAAAAQVXAgAAAAFdAgAAAAFeAgAAAAFfAgAAAAFgAgAAAAEFEgAAeQAgEwAAfAAgVAAAegAgVQAAewAgWgAAAQAgAxIAAHkAIFQAAHoAIFoAAAEAIAAAAAAAAVcBAAAAAQsSAABpADATAABuADBUAABqADBVAABrADBWAABsACBXAABtADBYAABtADBZAABtADBaAABtADBbAABvADBcAABwADAGMQIAAAABNAAAADQCNgAAADYCN0AAAAABOEAAAAABOQEAAAABAgAAAAUAIBIAAHQAIAMAAAAFACASAAB0ACATAABzACABCwAAeAAwCwMAAFQAIC4AAFAAMC8AAAMAEDAAAFAAMDECAAAAATICAEwAITQAAFE0IjYAAFI2IjdAAFMAIThAAFMAITkBAE4AIQIAAAAFACALAABzACACAAAAcQAgCwAAcgAgCi4AAHAAMC8AAHEAEDAAAHAAMDECAEwAITICAEwAITQAAFE0IjYAAFI2IjdAAFMAIThAAFMAITkBAE4AIQouAABwADAvAABxABAwAABwADAxAgBMACEyAgBMACE0AABRNCI2AABSNiI3QABTACE4QABTACE5AQBOACEGMQIAXwAhNAAAWzQiNgAAXDYiN0AAXQAhOEAAXQAhOQEAXgAhBjECAF8AITQAAFs0IjYAAFw2IjdAAF0AIThAAF0AITkBAF4AIQYxAgAAAAE0AAAANAI2AAAANgI3QAAAAAE4QAAAAAE5AQAAAAEEEgAAaQAwVAAAagAwVgAAbAAgWgAAbQAwAAIEAAB2ACBOAABVACAGMQIAAAABNAAAADQCNgAAADYCN0AAAAABOEAAAAABOQEAAAABCzECAAAAAUUCAAAAAUYBAAAAAUcBAAAAAUgBAAAAAUkBAAAAAUoBAAAAAUsBAAAAAUwBAAAAAU0BAAAAAU4BAAAAAQIAAAABACASAAB5ACADAAAACQAgEgAAeQAgEwAAfQAgDQAAAAkAIAsAAH0AIDECAF8AIUUCAF8AIUYBAGcAIUcBAGcAIUgBAGcAIUkBAGcAIUoBAGcAIUsBAGcAIUwBAGcAIU0BAGcAIU4BAF4AIQsxAgBfACFFAgBfACFGAQBnACFHAQBnACFIAQBnACFJAQBnACFKAQBnACFLAQBnACFMAQBnACFNAQBnACFOAQBeACECBAYCBQADAQMAAQEEBwAAAAAFBQAIGAAJGQAKGgALGwAMAAAAAAAFBQAIGAAJGQAKGgALGwAMAQMAAQEDAAEFBQARGAASGQATGgAUGwAVAAAAAAAFBQARGAASGQATGgAUGwAVBgIBBwgBCAsBCQwBCg0BDA8BDREEDhIFDxQBEBYEERcGFBgBFRkBFhoEHB0HHR4NHh8CHyACICECISICIiMCIyUCJCcEJSgOJioCJywEKC0PKS4CKi8CKzAELDMQLTQW"
+}
 
 async function decodeBase64AsWasm(wasmBase64: string): Promise<WebAssembly.Module> {
   const { Buffer } = await import('node:buffer')
@@ -37,12 +45,14 @@ async function decodeBase64AsWasm(wasmBase64: string): Promise<WebAssembly.Modul
 }
 
 config.compilerWasm = {
-  getRuntime: async () => await import("@prisma/client/runtime/query_compiler_bg.postgresql.mjs"),
+  getRuntime: async () => await import("@prisma/client/runtime/query_compiler_fast_bg.postgresql.mjs"),
 
   getQueryCompilerWasmModule: async () => {
-    const { wasm } = await import("@prisma/client/runtime/query_compiler_bg.postgresql.wasm-base64.mjs")
+    const { wasm } = await import("@prisma/client/runtime/query_compiler_fast_bg.postgresql.wasm-base64.mjs")
     return await decodeBase64AsWasm(wasm)
-  }
+  },
+
+  importName: "./query_compiler_fast_bg.js"
 }
 
 
@@ -57,7 +67,9 @@ export interface PrismaClientConstructor {
    * Type-safe database client for TypeScript
    * @example
    * ```
-   * const prisma = new PrismaClient()
+   * const prisma = new PrismaClient({
+   *   adapter: new PrismaPg({ connectionString: process.env.DATABASE_URL })
+   * })
    * // Fetch zero or more Members
    * const members = await prisma.member.findMany()
    * ```
@@ -79,7 +91,9 @@ export interface PrismaClientConstructor {
  * Type-safe database client for TypeScript
  * @example
  * ```
- * const prisma = new PrismaClient()
+ * const prisma = new PrismaClient({
+ *   adapter: new PrismaPg({ connectionString: process.env.DATABASE_URL })
+ * })
  * // Fetch zero or more Members
  * const members = await prisma.member.findMany()
  * ```
@@ -164,9 +178,9 @@ export interface PrismaClient<
    * ])
    * ```
    * 
-   * Read more in our [docs](https://www.prisma.io/docs/concepts/components/prisma-client/transactions).
+   * Read more in our [docs](https://www.prisma.io/docs/orm/prisma-client/queries/transactions).
    */
-  $transaction<P extends Prisma.PrismaPromise<any>[]>(arg: [...P], options?: { isolationLevel?: Prisma.TransactionIsolationLevel }): runtime.Types.Utils.JsPromise<runtime.Types.Utils.UnwrapTuple<P>>
+  $transaction<P extends Prisma.PrismaPromise<any>[]>(arg: [...P], options?: { maxWait?: number, timeout?: number, isolationLevel?: Prisma.TransactionIsolationLevel }): runtime.Types.Utils.JsPromise<runtime.Types.Utils.UnwrapTuple<P>>
 
   $transaction<R>(fn: (prisma: Omit<PrismaClient, runtime.ITXClientDenyList>) => runtime.Types.Utils.JsPromise<R>, options?: { maxWait?: number, timeout?: number, isolationLevel?: Prisma.TransactionIsolationLevel }): runtime.Types.Utils.JsPromise<R>
 
@@ -183,6 +197,16 @@ export interface PrismaClient<
     * ```
     */
   get member(): Prisma.MemberDelegate<ExtArgs, { omit: OmitOpts }>;
+
+  /**
+   * `prisma.roomTransaction`: Exposes CRUD operations for the **RoomTransaction** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more RoomTransactions
+    * const roomTransactions = await prisma.roomTransaction.findMany()
+    * ```
+    */
+  get roomTransaction(): Prisma.RoomTransactionDelegate<ExtArgs, { omit: OmitOpts }>;
 }
 
 export function getPrismaClientClass(): PrismaClientConstructor {

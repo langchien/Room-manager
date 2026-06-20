@@ -27,103 +27,109 @@ export type AggregateMember = {
 }
 
 export type MemberAvgAggregateOutputType = {
-  STT: number | null
-  Khoa: number | null
+  id: number | null
+  numberOrder: number | null
 }
 
 export type MemberSumAggregateOutputType = {
-  STT: number | null
-  Khoa: number | null
+  id: number | null
+  numberOrder: number | null
 }
 
 export type MemberMinAggregateOutputType = {
-  STT: number | null
-  HoVaTen: string | null
-  Khoa: number | null
-  Lop: string | null
-  MSSV: string | null
-  SDT: string | null
-  QueQuan: string | null
-  DiaChi: string | null
-  NgaySinh: string | null
-  SoTheCCCD: string | null
+  id: number | null
+  numberOrder: number | null
+  studentID: string | null
+  fullName: string | null
+  major: string | null
+  class: string | null
+  phoneNumber: string | null
+  homeTown: string | null
+  address: string | null
+  birthDate: string | null
+  cccd: string | null
 }
 
 export type MemberMaxAggregateOutputType = {
-  STT: number | null
-  HoVaTen: string | null
-  Khoa: number | null
-  Lop: string | null
-  MSSV: string | null
-  SDT: string | null
-  QueQuan: string | null
-  DiaChi: string | null
-  NgaySinh: string | null
-  SoTheCCCD: string | null
+  id: number | null
+  numberOrder: number | null
+  studentID: string | null
+  fullName: string | null
+  major: string | null
+  class: string | null
+  phoneNumber: string | null
+  homeTown: string | null
+  address: string | null
+  birthDate: string | null
+  cccd: string | null
 }
 
 export type MemberCountAggregateOutputType = {
-  STT: number
-  HoVaTen: number
-  Khoa: number
-  Lop: number
-  MSSV: number
-  SDT: number
-  QueQuan: number
-  DiaChi: number
-  NgaySinh: number
-  SoTheCCCD: number
+  id: number
+  numberOrder: number
+  studentID: number
+  fullName: number
+  major: number
+  class: number
+  phoneNumber: number
+  homeTown: number
+  address: number
+  birthDate: number
+  cccd: number
   _all: number
 }
 
 
 export type MemberAvgAggregateInputType = {
-  STT?: true
-  Khoa?: true
+  id?: true
+  numberOrder?: true
 }
 
 export type MemberSumAggregateInputType = {
-  STT?: true
-  Khoa?: true
+  id?: true
+  numberOrder?: true
 }
 
 export type MemberMinAggregateInputType = {
-  STT?: true
-  HoVaTen?: true
-  Khoa?: true
-  Lop?: true
-  MSSV?: true
-  SDT?: true
-  QueQuan?: true
-  DiaChi?: true
-  NgaySinh?: true
-  SoTheCCCD?: true
+  id?: true
+  numberOrder?: true
+  studentID?: true
+  fullName?: true
+  major?: true
+  class?: true
+  phoneNumber?: true
+  homeTown?: true
+  address?: true
+  birthDate?: true
+  cccd?: true
 }
 
 export type MemberMaxAggregateInputType = {
-  STT?: true
-  HoVaTen?: true
-  Khoa?: true
-  Lop?: true
-  MSSV?: true
-  SDT?: true
-  QueQuan?: true
-  DiaChi?: true
-  NgaySinh?: true
-  SoTheCCCD?: true
+  id?: true
+  numberOrder?: true
+  studentID?: true
+  fullName?: true
+  major?: true
+  class?: true
+  phoneNumber?: true
+  homeTown?: true
+  address?: true
+  birthDate?: true
+  cccd?: true
 }
 
 export type MemberCountAggregateInputType = {
-  STT?: true
-  HoVaTen?: true
-  Khoa?: true
-  Lop?: true
-  MSSV?: true
-  SDT?: true
-  QueQuan?: true
-  DiaChi?: true
-  NgaySinh?: true
-  SoTheCCCD?: true
+  id?: true
+  numberOrder?: true
+  studentID?: true
+  fullName?: true
+  major?: true
+  class?: true
+  phoneNumber?: true
+  homeTown?: true
+  address?: true
+  birthDate?: true
+  cccd?: true
   _all?: true
 }
 
@@ -214,16 +220,17 @@ export type MemberGroupByArgs<ExtArgs extends runtime.Types.Extensions.InternalA
 }
 
 export type MemberGroupByOutputType = {
-  STT: number
-  HoVaTen: string
-  Khoa: number
-  Lop: string
-  MSSV: string
-  SDT: string
-  QueQuan: string
-  DiaChi: string
-  NgaySinh: string
-  SoTheCCCD: string | null
+  id: number
+  numberOrder: number
+  studentID: string
+  fullName: string
+  major: string
+  class: string
+  phoneNumber: string
+  homeTown: string
+  address: string
+  birthDate: string
+  cccd: string | null
   _count: MemberCountAggregateOutputType | null
   _avg: MemberAvgAggregateOutputType | null
   _sum: MemberSumAggregateOutputType | null
@@ -231,7 +238,7 @@ export type MemberGroupByOutputType = {
   _max: MemberMaxAggregateOutputType | null
 }
 
-type GetMemberGroupByPayload<T extends MemberGroupByArgs> = Prisma.PrismaPromise<
+export type GetMemberGroupByPayload<T extends MemberGroupByArgs> = Prisma.PrismaPromise<
   Array<
     Prisma.PickEnumerable<MemberGroupByOutputType, T['by']> &
       {
@@ -250,58 +257,65 @@ export type MemberWhereInput = {
   AND?: Prisma.MemberWhereInput | Prisma.MemberWhereInput[]
   OR?: Prisma.MemberWhereInput[]
   NOT?: Prisma.MemberWhereInput | Prisma.MemberWhereInput[]
-  STT?: Prisma.IntFilter<"Member"> | number
-  HoVaTen?: Prisma.StringFilter<"Member"> | string
-  Khoa?: Prisma.IntFilter<"Member"> | number
-  Lop?: Prisma.StringFilter<"Member"> | string
-  MSSV?: Prisma.StringFilter<"Member"> | string
-  SDT?: Prisma.StringFilter<"Member"> | string
-  QueQuan?: Prisma.StringFilter<"Member"> | string
-  DiaChi?: Prisma.StringFilter<"Member"> | string
-  NgaySinh?: Prisma.StringFilter<"Member"> | string
-  SoTheCCCD?: Prisma.StringNullableFilter<"Member"> | string | null
+  id?: Prisma.IntFilter<"Member"> | number
+  numberOrder?: Prisma.IntFilter<"Member"> | number
+  studentID?: Prisma.StringFilter<"Member"> | string
+  fullName?: Prisma.StringFilter<"Member"> | string
+  major?: Prisma.StringFilter<"Member"> | string
+  class?: Prisma.StringFilter<"Member"> | string
+  phoneNumber?: Prisma.StringFilter<"Member"> | string
+  homeTown?: Prisma.StringFilter<"Member"> | string
+  address?: Prisma.StringFilter<"Member"> | string
+  birthDate?: Prisma.StringFilter<"Member"> | string
+  cccd?: Prisma.StringNullableFilter<"Member"> | string | null
+  transactions?: Prisma.RoomTransactionListRelationFilter
 }
 
 export type MemberOrderByWithRelationInput = {
-  STT?: Prisma.SortOrder
-  HoVaTen?: Prisma.SortOrder
-  Khoa?: Prisma.SortOrder
-  Lop?: Prisma.SortOrder
-  MSSV?: Prisma.SortOrder
-  SDT?: Prisma.SortOrder
-  QueQuan?: Prisma.SortOrder
-  DiaChi?: Prisma.SortOrder
-  NgaySinh?: Prisma.SortOrder
-  SoTheCCCD?: Prisma.SortOrderInput | Prisma.SortOrder
+  id?: Prisma.SortOrder
+  numberOrder?: Prisma.SortOrder
+  studentID?: Prisma.SortOrder
+  fullName?: Prisma.SortOrder
+  major?: Prisma.SortOrder
+  class?: Prisma.SortOrder
+  phoneNumber?: Prisma.SortOrder
+  homeTown?: Prisma.SortOrder
+  address?: Prisma.SortOrder
+  birthDate?: Prisma.SortOrder
+  cccd?: Prisma.SortOrderInput | Prisma.SortOrder
+  transactions?: Prisma.RoomTransactionOrderByRelationAggregateInput
 }
 
 export type MemberWhereUniqueInput = Prisma.AtLeast<{
-  STT?: number
-  MSSV?: string
+  id?: number
+  numberOrder?: number
+  studentID?: string
   AND?: Prisma.MemberWhereInput | Prisma.MemberWhereInput[]
   OR?: Prisma.MemberWhereInput[]
   NOT?: Prisma.MemberWhereInput | Prisma.MemberWhereInput[]
-  HoVaTen?: Prisma.StringFilter<"Member"> | string
-  Khoa?: Prisma.IntFilter<"Member"> | number
-  Lop?: Prisma.StringFilter<"Member"> | string
-  SDT?: Prisma.StringFilter<"Member"> | string
-  QueQuan?: Prisma.StringFilter<"Member"> | string
-  DiaChi?: Prisma.StringFilter<"Member"> | string
-  NgaySinh?: Prisma.StringFilter<"Member"> | string
-  SoTheCCCD?: Prisma.StringNullableFilter<"Member"> | string | null
-}, "STT" | "MSSV">
+  fullName?: Prisma.StringFilter<"Member"> | string
+  major?: Prisma.StringFilter<"Member"> | string
+  class?: Prisma.StringFilter<"Member"> | string
+  phoneNumber?: Prisma.StringFilter<"Member"> | string
+  homeTown?: Prisma.StringFilter<"Member"> | string
+  address?: Prisma.StringFilter<"Member"> | string
+  birthDate?: Prisma.StringFilter<"Member"> | string
+  cccd?: Prisma.StringNullableFilter<"Member"> | string | null
+  transactions?: Prisma.RoomTransactionListRelationFilter
+}, "id" | "numberOrder" | "studentID">
 
 export type MemberOrderByWithAggregationInput = {
-  STT?: Prisma.SortOrder
-  HoVaTen?: Prisma.SortOrder
-  Khoa?: Prisma.SortOrder
-  Lop?: Prisma.SortOrder
-  MSSV?: Prisma.SortOrder
-  SDT?: Prisma.SortOrder
-  QueQuan?: Prisma.SortOrder
-  DiaChi?: Prisma.SortOrder
-  NgaySinh?: Prisma.SortOrder
-  SoTheCCCD?: Prisma.SortOrderInput | Prisma.SortOrder
+  id?: Prisma.SortOrder
+  numberOrder?: Prisma.SortOrder
+  studentID?: Prisma.SortOrder
+  fullName?: Prisma.SortOrder
+  major?: Prisma.SortOrder
+  class?: Prisma.SortOrder
+  phoneNumber?: Prisma.SortOrder
+  homeTown?: Prisma.SortOrder
+  address?: Prisma.SortOrder
+  birthDate?: Prisma.SortOrder
+  cccd?: Prisma.SortOrderInput | Prisma.SortOrder
   _count?: Prisma.MemberCountOrderByAggregateInput
   _avg?: Prisma.MemberAvgOrderByAggregateInput
   _max?: Prisma.MemberMaxOrderByAggregateInput
@@ -313,156 +327,173 @@ export type MemberScalarWhereWithAggregatesInput = {
   AND?: Prisma.MemberScalarWhereWithAggregatesInput | Prisma.MemberScalarWhereWithAggregatesInput[]
   OR?: Prisma.MemberScalarWhereWithAggregatesInput[]
   NOT?: Prisma.MemberScalarWhereWithAggregatesInput | Prisma.MemberScalarWhereWithAggregatesInput[]
-  STT?: Prisma.IntWithAggregatesFilter<"Member"> | number
-  HoVaTen?: Prisma.StringWithAggregatesFilter<"Member"> | string
-  Khoa?: Prisma.IntWithAggregatesFilter<"Member"> | number
-  Lop?: Prisma.StringWithAggregatesFilter<"Member"> | string
-  MSSV?: Prisma.StringWithAggregatesFilter<"Member"> | string
-  SDT?: Prisma.StringWithAggregatesFilter<"Member"> | string
-  QueQuan?: Prisma.StringWithAggregatesFilter<"Member"> | string
-  DiaChi?: Prisma.StringWithAggregatesFilter<"Member"> | string
-  NgaySinh?: Prisma.StringWithAggregatesFilter<"Member"> | string
-  SoTheCCCD?: Prisma.StringNullableWithAggregatesFilter<"Member"> | string | null
+  id?: Prisma.IntWithAggregatesFilter<"Member"> | number
+  numberOrder?: Prisma.IntWithAggregatesFilter<"Member"> | number
+  studentID?: Prisma.StringWithAggregatesFilter<"Member"> | string
+  fullName?: Prisma.StringWithAggregatesFilter<"Member"> | string
+  major?: Prisma.StringWithAggregatesFilter<"Member"> | string
+  class?: Prisma.StringWithAggregatesFilter<"Member"> | string
+  phoneNumber?: Prisma.StringWithAggregatesFilter<"Member"> | string
+  homeTown?: Prisma.StringWithAggregatesFilter<"Member"> | string
+  address?: Prisma.StringWithAggregatesFilter<"Member"> | string
+  birthDate?: Prisma.StringWithAggregatesFilter<"Member"> | string
+  cccd?: Prisma.StringNullableWithAggregatesFilter<"Member"> | string | null
 }
 
 export type MemberCreateInput = {
-  STT: number
-  HoVaTen: string
-  Khoa: number
-  Lop: string
-  MSSV: string
-  SDT: string
-  QueQuan: string
-  DiaChi: string
-  NgaySinh: string
-  SoTheCCCD?: string | null
+  numberOrder: number
+  studentID: string
+  fullName: string
+  major: string
+  class: string
+  phoneNumber: string
+  homeTown: string
+  address: string
+  birthDate: string
+  cccd?: string | null
+  transactions?: Prisma.RoomTransactionCreateNestedManyWithoutMemberInput
 }
 
 export type MemberUncheckedCreateInput = {
-  STT: number
-  HoVaTen: string
-  Khoa: number
-  Lop: string
-  MSSV: string
-  SDT: string
-  QueQuan: string
-  DiaChi: string
-  NgaySinh: string
-  SoTheCCCD?: string | null
+  id?: number
+  numberOrder: number
+  studentID: string
+  fullName: string
+  major: string
+  class: string
+  phoneNumber: string
+  homeTown: string
+  address: string
+  birthDate: string
+  cccd?: string | null
+  transactions?: Prisma.RoomTransactionUncheckedCreateNestedManyWithoutMemberInput
 }
 
 export type MemberUpdateInput = {
-  STT?: Prisma.IntFieldUpdateOperationsInput | number
-  HoVaTen?: Prisma.StringFieldUpdateOperationsInput | string
-  Khoa?: Prisma.IntFieldUpdateOperationsInput | number
-  Lop?: Prisma.StringFieldUpdateOperationsInput | string
-  MSSV?: Prisma.StringFieldUpdateOperationsInput | string
-  SDT?: Prisma.StringFieldUpdateOperationsInput | string
-  QueQuan?: Prisma.StringFieldUpdateOperationsInput | string
-  DiaChi?: Prisma.StringFieldUpdateOperationsInput | string
-  NgaySinh?: Prisma.StringFieldUpdateOperationsInput | string
-  SoTheCCCD?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  numberOrder?: Prisma.IntFieldUpdateOperationsInput | number
+  studentID?: Prisma.StringFieldUpdateOperationsInput | string
+  fullName?: Prisma.StringFieldUpdateOperationsInput | string
+  major?: Prisma.StringFieldUpdateOperationsInput | string
+  class?: Prisma.StringFieldUpdateOperationsInput | string
+  phoneNumber?: Prisma.StringFieldUpdateOperationsInput | string
+  homeTown?: Prisma.StringFieldUpdateOperationsInput | string
+  address?: Prisma.StringFieldUpdateOperationsInput | string
+  birthDate?: Prisma.StringFieldUpdateOperationsInput | string
+  cccd?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  transactions?: Prisma.RoomTransactionUpdateManyWithoutMemberNestedInput
 }
 
 export type MemberUncheckedUpdateInput = {
-  STT?: Prisma.IntFieldUpdateOperationsInput | number
-  HoVaTen?: Prisma.StringFieldUpdateOperationsInput | string
-  Khoa?: Prisma.IntFieldUpdateOperationsInput | number
-  Lop?: Prisma.StringFieldUpdateOperationsInput | string
-  MSSV?: Prisma.StringFieldUpdateOperationsInput | string
-  SDT?: Prisma.StringFieldUpdateOperationsInput | string
-  QueQuan?: Prisma.StringFieldUpdateOperationsInput | string
-  DiaChi?: Prisma.StringFieldUpdateOperationsInput | string
-  NgaySinh?: Prisma.StringFieldUpdateOperationsInput | string
-  SoTheCCCD?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  id?: Prisma.IntFieldUpdateOperationsInput | number
+  numberOrder?: Prisma.IntFieldUpdateOperationsInput | number
+  studentID?: Prisma.StringFieldUpdateOperationsInput | string
+  fullName?: Prisma.StringFieldUpdateOperationsInput | string
+  major?: Prisma.StringFieldUpdateOperationsInput | string
+  class?: Prisma.StringFieldUpdateOperationsInput | string
+  phoneNumber?: Prisma.StringFieldUpdateOperationsInput | string
+  homeTown?: Prisma.StringFieldUpdateOperationsInput | string
+  address?: Prisma.StringFieldUpdateOperationsInput | string
+  birthDate?: Prisma.StringFieldUpdateOperationsInput | string
+  cccd?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  transactions?: Prisma.RoomTransactionUncheckedUpdateManyWithoutMemberNestedInput
 }
 
 export type MemberCreateManyInput = {
-  STT: number
-  HoVaTen: string
-  Khoa: number
-  Lop: string
-  MSSV: string
-  SDT: string
-  QueQuan: string
-  DiaChi: string
-  NgaySinh: string
-  SoTheCCCD?: string | null
+  id?: number
+  numberOrder: number
+  studentID: string
+  fullName: string
+  major: string
+  class: string
+  phoneNumber: string
+  homeTown: string
+  address: string
+  birthDate: string
+  cccd?: string | null
 }
 
 export type MemberUpdateManyMutationInput = {
-  STT?: Prisma.IntFieldUpdateOperationsInput | number
-  HoVaTen?: Prisma.StringFieldUpdateOperationsInput | string
-  Khoa?: Prisma.IntFieldUpdateOperationsInput | number
-  Lop?: Prisma.StringFieldUpdateOperationsInput | string
-  MSSV?: Prisma.StringFieldUpdateOperationsInput | string
-  SDT?: Prisma.StringFieldUpdateOperationsInput | string
-  QueQuan?: Prisma.StringFieldUpdateOperationsInput | string
-  DiaChi?: Prisma.StringFieldUpdateOperationsInput | string
-  NgaySinh?: Prisma.StringFieldUpdateOperationsInput | string
-  SoTheCCCD?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  numberOrder?: Prisma.IntFieldUpdateOperationsInput | number
+  studentID?: Prisma.StringFieldUpdateOperationsInput | string
+  fullName?: Prisma.StringFieldUpdateOperationsInput | string
+  major?: Prisma.StringFieldUpdateOperationsInput | string
+  class?: Prisma.StringFieldUpdateOperationsInput | string
+  phoneNumber?: Prisma.StringFieldUpdateOperationsInput | string
+  homeTown?: Prisma.StringFieldUpdateOperationsInput | string
+  address?: Prisma.StringFieldUpdateOperationsInput | string
+  birthDate?: Prisma.StringFieldUpdateOperationsInput | string
+  cccd?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
 }
 
 export type MemberUncheckedUpdateManyInput = {
-  STT?: Prisma.IntFieldUpdateOperationsInput | number
-  HoVaTen?: Prisma.StringFieldUpdateOperationsInput | string
-  Khoa?: Prisma.IntFieldUpdateOperationsInput | number
-  Lop?: Prisma.StringFieldUpdateOperationsInput | string
-  MSSV?: Prisma.StringFieldUpdateOperationsInput | string
-  SDT?: Prisma.StringFieldUpdateOperationsInput | string
-  QueQuan?: Prisma.StringFieldUpdateOperationsInput | string
-  DiaChi?: Prisma.StringFieldUpdateOperationsInput | string
-  NgaySinh?: Prisma.StringFieldUpdateOperationsInput | string
-  SoTheCCCD?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  id?: Prisma.IntFieldUpdateOperationsInput | number
+  numberOrder?: Prisma.IntFieldUpdateOperationsInput | number
+  studentID?: Prisma.StringFieldUpdateOperationsInput | string
+  fullName?: Prisma.StringFieldUpdateOperationsInput | string
+  major?: Prisma.StringFieldUpdateOperationsInput | string
+  class?: Prisma.StringFieldUpdateOperationsInput | string
+  phoneNumber?: Prisma.StringFieldUpdateOperationsInput | string
+  homeTown?: Prisma.StringFieldUpdateOperationsInput | string
+  address?: Prisma.StringFieldUpdateOperationsInput | string
+  birthDate?: Prisma.StringFieldUpdateOperationsInput | string
+  cccd?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
 }
 
 export type MemberCountOrderByAggregateInput = {
-  STT?: Prisma.SortOrder
-  HoVaTen?: Prisma.SortOrder
-  Khoa?: Prisma.SortOrder
-  Lop?: Prisma.SortOrder
-  MSSV?: Prisma.SortOrder
-  SDT?: Prisma.SortOrder
-  QueQuan?: Prisma.SortOrder
-  DiaChi?: Prisma.SortOrder
-  NgaySinh?: Prisma.SortOrder
-  SoTheCCCD?: Prisma.SortOrder
+  id?: Prisma.SortOrder
+  numberOrder?: Prisma.SortOrder
+  studentID?: Prisma.SortOrder
+  fullName?: Prisma.SortOrder
+  major?: Prisma.SortOrder
+  class?: Prisma.SortOrder
+  phoneNumber?: Prisma.SortOrder
+  homeTown?: Prisma.SortOrder
+  address?: Prisma.SortOrder
+  birthDate?: Prisma.SortOrder
+  cccd?: Prisma.SortOrder
 }
 
 export type MemberAvgOrderByAggregateInput = {
-  STT?: Prisma.SortOrder
-  Khoa?: Prisma.SortOrder
+  id?: Prisma.SortOrder
+  numberOrder?: Prisma.SortOrder
 }
 
 export type MemberMaxOrderByAggregateInput = {
-  STT?: Prisma.SortOrder
-  HoVaTen?: Prisma.SortOrder
-  Khoa?: Prisma.SortOrder
-  Lop?: Prisma.SortOrder
-  MSSV?: Prisma.SortOrder
-  SDT?: Prisma.SortOrder
-  QueQuan?: Prisma.SortOrder
-  DiaChi?: Prisma.SortOrder
-  NgaySinh?: Prisma.SortOrder
-  SoTheCCCD?: Prisma.SortOrder
+  id?: Prisma.SortOrder
+  numberOrder?: Prisma.SortOrder
+  studentID?: Prisma.SortOrder
+  fullName?: Prisma.SortOrder
+  major?: Prisma.SortOrder
+  class?: Prisma.SortOrder
+  phoneNumber?: Prisma.SortOrder
+  homeTown?: Prisma.SortOrder
+  address?: Prisma.SortOrder
+  birthDate?: Prisma.SortOrder
+  cccd?: Prisma.SortOrder
 }
 
 export type MemberMinOrderByAggregateInput = {
-  STT?: Prisma.SortOrder
-  HoVaTen?: Prisma.SortOrder
-  Khoa?: Prisma.SortOrder
-  Lop?: Prisma.SortOrder
-  MSSV?: Prisma.SortOrder
-  SDT?: Prisma.SortOrder
-  QueQuan?: Prisma.SortOrder
-  DiaChi?: Prisma.SortOrder
-  NgaySinh?: Prisma.SortOrder
-  SoTheCCCD?: Prisma.SortOrder
+  id?: Prisma.SortOrder
+  numberOrder?: Prisma.SortOrder
+  studentID?: Prisma.SortOrder
+  fullName?: Prisma.SortOrder
+  major?: Prisma.SortOrder
+  class?: Prisma.SortOrder
+  phoneNumber?: Prisma.SortOrder
+  homeTown?: Prisma.SortOrder
+  address?: Prisma.SortOrder
+  birthDate?: Prisma.SortOrder
+  cccd?: Prisma.SortOrder
 }
 
 export type MemberSumOrderByAggregateInput = {
-  STT?: Prisma.SortOrder
-  Khoa?: Prisma.SortOrder
+  id?: Prisma.SortOrder
+  numberOrder?: Prisma.SortOrder
+}
+
+export type MemberScalarRelationFilter = {
+  is?: Prisma.MemberWhereInput
+  isNot?: Prisma.MemberWhereInput
 }
 
 export type IntFieldUpdateOperationsInput = {
@@ -481,76 +512,204 @@ export type NullableStringFieldUpdateOperationsInput = {
   set?: string | null
 }
 
+export type MemberCreateNestedOneWithoutTransactionsInput = {
+  create?: Prisma.XOR<Prisma.MemberCreateWithoutTransactionsInput, Prisma.MemberUncheckedCreateWithoutTransactionsInput>
+  connectOrCreate?: Prisma.MemberCreateOrConnectWithoutTransactionsInput
+  connect?: Prisma.MemberWhereUniqueInput
+}
+
+export type MemberUpdateOneRequiredWithoutTransactionsNestedInput = {
+  create?: Prisma.XOR<Prisma.MemberCreateWithoutTransactionsInput, Prisma.MemberUncheckedCreateWithoutTransactionsInput>
+  connectOrCreate?: Prisma.MemberCreateOrConnectWithoutTransactionsInput
+  upsert?: Prisma.MemberUpsertWithoutTransactionsInput
+  connect?: Prisma.MemberWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.MemberUpdateToOneWithWhereWithoutTransactionsInput, Prisma.MemberUpdateWithoutTransactionsInput>, Prisma.MemberUncheckedUpdateWithoutTransactionsInput>
+}
+
+export type MemberCreateWithoutTransactionsInput = {
+  numberOrder: number
+  studentID: string
+  fullName: string
+  major: string
+  class: string
+  phoneNumber: string
+  homeTown: string
+  address: string
+  birthDate: string
+  cccd?: string | null
+}
+
+export type MemberUncheckedCreateWithoutTransactionsInput = {
+  id?: number
+  numberOrder: number
+  studentID: string
+  fullName: string
+  major: string
+  class: string
+  phoneNumber: string
+  homeTown: string
+  address: string
+  birthDate: string
+  cccd?: string | null
+}
+
+export type MemberCreateOrConnectWithoutTransactionsInput = {
+  where: Prisma.MemberWhereUniqueInput
+  create: Prisma.XOR<Prisma.MemberCreateWithoutTransactionsInput, Prisma.MemberUncheckedCreateWithoutTransactionsInput>
+}
+
+export type MemberUpsertWithoutTransactionsInput = {
+  update: Prisma.XOR<Prisma.MemberUpdateWithoutTransactionsInput, Prisma.MemberUncheckedUpdateWithoutTransactionsInput>
+  create: Prisma.XOR<Prisma.MemberCreateWithoutTransactionsInput, Prisma.MemberUncheckedCreateWithoutTransactionsInput>
+  where?: Prisma.MemberWhereInput
+}
+
+export type MemberUpdateToOneWithWhereWithoutTransactionsInput = {
+  where?: Prisma.MemberWhereInput
+  data: Prisma.XOR<Prisma.MemberUpdateWithoutTransactionsInput, Prisma.MemberUncheckedUpdateWithoutTransactionsInput>
+}
+
+export type MemberUpdateWithoutTransactionsInput = {
+  numberOrder?: Prisma.IntFieldUpdateOperationsInput | number
+  studentID?: Prisma.StringFieldUpdateOperationsInput | string
+  fullName?: Prisma.StringFieldUpdateOperationsInput | string
+  major?: Prisma.StringFieldUpdateOperationsInput | string
+  class?: Prisma.StringFieldUpdateOperationsInput | string
+  phoneNumber?: Prisma.StringFieldUpdateOperationsInput | string
+  homeTown?: Prisma.StringFieldUpdateOperationsInput | string
+  address?: Prisma.StringFieldUpdateOperationsInput | string
+  birthDate?: Prisma.StringFieldUpdateOperationsInput | string
+  cccd?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+}
+
+export type MemberUncheckedUpdateWithoutTransactionsInput = {
+  id?: Prisma.IntFieldUpdateOperationsInput | number
+  numberOrder?: Prisma.IntFieldUpdateOperationsInput | number
+  studentID?: Prisma.StringFieldUpdateOperationsInput | string
+  fullName?: Prisma.StringFieldUpdateOperationsInput | string
+  major?: Prisma.StringFieldUpdateOperationsInput | string
+  class?: Prisma.StringFieldUpdateOperationsInput | string
+  phoneNumber?: Prisma.StringFieldUpdateOperationsInput | string
+  homeTown?: Prisma.StringFieldUpdateOperationsInput | string
+  address?: Prisma.StringFieldUpdateOperationsInput | string
+  birthDate?: Prisma.StringFieldUpdateOperationsInput | string
+  cccd?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+}
+
+
+/**
+ * Count Type MemberCountOutputType
+ */
+
+export type MemberCountOutputType = {
+  transactions: number
+}
+
+export type MemberCountOutputTypeSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  transactions?: boolean | MemberCountOutputTypeCountTransactionsArgs
+}
+
+/**
+ * MemberCountOutputType without action
+ */
+export type MemberCountOutputTypeDefaultArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the MemberCountOutputType
+   */
+  select?: Prisma.MemberCountOutputTypeSelect<ExtArgs> | null
+}
+
+/**
+ * MemberCountOutputType without action
+ */
+export type MemberCountOutputTypeCountTransactionsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.RoomTransactionWhereInput
+}
 
 
 export type MemberSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
-  STT?: boolean
-  HoVaTen?: boolean
-  Khoa?: boolean
-  Lop?: boolean
-  MSSV?: boolean
-  SDT?: boolean
-  QueQuan?: boolean
-  DiaChi?: boolean
-  NgaySinh?: boolean
-  SoTheCCCD?: boolean
+  id?: boolean
+  numberOrder?: boolean
+  studentID?: boolean
+  fullName?: boolean
+  major?: boolean
+  class?: boolean
+  phoneNumber?: boolean
+  homeTown?: boolean
+  address?: boolean
+  birthDate?: boolean
+  cccd?: boolean
+  transactions?: boolean | Prisma.Member$transactionsArgs<ExtArgs>
+  _count?: boolean | Prisma.MemberCountOutputTypeDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["member"]>
 
 export type MemberSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
-  STT?: boolean
-  HoVaTen?: boolean
-  Khoa?: boolean
-  Lop?: boolean
-  MSSV?: boolean
-  SDT?: boolean
-  QueQuan?: boolean
-  DiaChi?: boolean
-  NgaySinh?: boolean
-  SoTheCCCD?: boolean
+  id?: boolean
+  numberOrder?: boolean
+  studentID?: boolean
+  fullName?: boolean
+  major?: boolean
+  class?: boolean
+  phoneNumber?: boolean
+  homeTown?: boolean
+  address?: boolean
+  birthDate?: boolean
+  cccd?: boolean
 }, ExtArgs["result"]["member"]>
 
 export type MemberSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
-  STT?: boolean
-  HoVaTen?: boolean
-  Khoa?: boolean
-  Lop?: boolean
-  MSSV?: boolean
-  SDT?: boolean
-  QueQuan?: boolean
-  DiaChi?: boolean
-  NgaySinh?: boolean
-  SoTheCCCD?: boolean
+  id?: boolean
+  numberOrder?: boolean
+  studentID?: boolean
+  fullName?: boolean
+  major?: boolean
+  class?: boolean
+  phoneNumber?: boolean
+  homeTown?: boolean
+  address?: boolean
+  birthDate?: boolean
+  cccd?: boolean
 }, ExtArgs["result"]["member"]>
 
 export type MemberSelectScalar = {
-  STT?: boolean
-  HoVaTen?: boolean
-  Khoa?: boolean
-  Lop?: boolean
-  MSSV?: boolean
-  SDT?: boolean
-  QueQuan?: boolean
-  DiaChi?: boolean
-  NgaySinh?: boolean
-  SoTheCCCD?: boolean
+  id?: boolean
+  numberOrder?: boolean
+  studentID?: boolean
+  fullName?: boolean
+  major?: boolean
+  class?: boolean
+  phoneNumber?: boolean
+  homeTown?: boolean
+  address?: boolean
+  birthDate?: boolean
+  cccd?: boolean
 }
 
-export type MemberOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"STT" | "HoVaTen" | "Khoa" | "Lop" | "MSSV" | "SDT" | "QueQuan" | "DiaChi" | "NgaySinh" | "SoTheCCCD", ExtArgs["result"]["member"]>
+export type MemberOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "numberOrder" | "studentID" | "fullName" | "major" | "class" | "phoneNumber" | "homeTown" | "address" | "birthDate" | "cccd", ExtArgs["result"]["member"]>
+export type MemberInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  transactions?: boolean | Prisma.Member$transactionsArgs<ExtArgs>
+  _count?: boolean | Prisma.MemberCountOutputTypeDefaultArgs<ExtArgs>
+}
+export type MemberIncludeCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {}
+export type MemberIncludeUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {}
 
 export type $MemberPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   name: "Member"
-  objects: {}
+  objects: {
+    transactions: Prisma.$RoomTransactionPayload<ExtArgs>[]
+  }
   scalars: runtime.Types.Extensions.GetPayloadResult<{
-    STT: number
-    HoVaTen: string
-    Khoa: number
-    Lop: string
-    MSSV: string
-    SDT: string
-    QueQuan: string
-    DiaChi: string
-    NgaySinh: string
-    SoTheCCCD: string | null
+    id: number
+    numberOrder: number
+    studentID: string
+    fullName: string
+    major: string
+    class: string
+    phoneNumber: string
+    homeTown: string
+    address: string
+    birthDate: string
+    cccd: string | null
   }, ExtArgs["result"]["member"]>
   composites: {}
 }
@@ -634,8 +793,8 @@ export interface MemberDelegate<ExtArgs extends runtime.Types.Extensions.Interna
    * // Get first 10 Members
    * const members = await prisma.member.findMany({ take: 10 })
    * 
-   * // Only select the `STT`
-   * const memberWithSTTOnly = await prisma.member.findMany({ select: { STT: true } })
+   * // Only select the `id`
+   * const memberWithIdOnly = await prisma.member.findMany({ select: { id: true } })
    * 
    */
   findMany<T extends MemberFindManyArgs>(args?: Prisma.SelectSubset<T, MemberFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$MemberPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
@@ -679,9 +838,9 @@ export interface MemberDelegate<ExtArgs extends runtime.Types.Extensions.Interna
    *   ]
    * })
    * 
-   * // Create many Members and only return the `STT`
-   * const memberWithSTTOnly = await prisma.member.createManyAndReturn({
-   *   select: { STT: true },
+   * // Create many Members and only return the `id`
+   * const memberWithIdOnly = await prisma.member.createManyAndReturn({
+   *   select: { id: true },
    *   data: [
    *     // ... provide data here
    *   ]
@@ -770,9 +929,9 @@ export interface MemberDelegate<ExtArgs extends runtime.Types.Extensions.Interna
    *   ]
    * })
    * 
-   * // Update zero or more Members and only return the `STT`
-   * const memberWithSTTOnly = await prisma.member.updateManyAndReturn({
-   *   select: { STT: true },
+   * // Update zero or more Members and only return the `id`
+   * const memberWithIdOnly = await prisma.member.updateManyAndReturn({
+   *   select: { id: true },
    *   where: {
    *     // ... provide filter here
    *   },
@@ -945,6 +1104,7 @@ readonly fields: MemberFieldRefs;
  */
 export interface Prisma__MemberClient<T, Null = never, ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
   readonly [Symbol.toStringTag]: "PrismaPromise"
+  transactions<T extends Prisma.Member$transactionsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Member$transactionsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$RoomTransactionPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   /**
    * Attaches callbacks for the resolution and/or rejection of the Promise.
    * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -974,16 +1134,17 @@ export interface Prisma__MemberClient<T, Null = never, ExtArgs extends runtime.T
  * Fields of the Member model
  */
 export interface MemberFieldRefs {
-  readonly STT: Prisma.FieldRef<"Member", 'Int'>
-  readonly HoVaTen: Prisma.FieldRef<"Member", 'String'>
-  readonly Khoa: Prisma.FieldRef<"Member", 'Int'>
-  readonly Lop: Prisma.FieldRef<"Member", 'String'>
-  readonly MSSV: Prisma.FieldRef<"Member", 'String'>
-  readonly SDT: Prisma.FieldRef<"Member", 'String'>
-  readonly QueQuan: Prisma.FieldRef<"Member", 'String'>
-  readonly DiaChi: Prisma.FieldRef<"Member", 'String'>
-  readonly NgaySinh: Prisma.FieldRef<"Member", 'String'>
-  readonly SoTheCCCD: Prisma.FieldRef<"Member", 'String'>
+  readonly id: Prisma.FieldRef<"Member", 'Int'>
+  readonly numberOrder: Prisma.FieldRef<"Member", 'Int'>
+  readonly studentID: Prisma.FieldRef<"Member", 'String'>
+  readonly fullName: Prisma.FieldRef<"Member", 'String'>
+  readonly major: Prisma.FieldRef<"Member", 'String'>
+  readonly class: Prisma.FieldRef<"Member", 'String'>
+  readonly phoneNumber: Prisma.FieldRef<"Member", 'String'>
+  readonly homeTown: Prisma.FieldRef<"Member", 'String'>
+  readonly address: Prisma.FieldRef<"Member", 'String'>
+  readonly birthDate: Prisma.FieldRef<"Member", 'String'>
+  readonly cccd: Prisma.FieldRef<"Member", 'String'>
 }
     
 
@@ -1000,6 +1161,10 @@ export type MemberFindUniqueArgs<ExtArgs extends runtime.Types.Extensions.Intern
    * Omit specific fields from the Member
    */
   omit?: Prisma.MemberOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.MemberInclude<ExtArgs> | null
   /**
    * Filter, which Member to fetch.
    */
@@ -1019,6 +1184,10 @@ export type MemberFindUniqueOrThrowArgs<ExtArgs extends runtime.Types.Extensions
    */
   omit?: Prisma.MemberOmit<ExtArgs> | null
   /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.MemberInclude<ExtArgs> | null
+  /**
    * Filter, which Member to fetch.
    */
   where: Prisma.MemberWhereUniqueInput
@@ -1036,6 +1205,10 @@ export type MemberFindFirstArgs<ExtArgs extends runtime.Types.Extensions.Interna
    * Omit specific fields from the Member
    */
   omit?: Prisma.MemberOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.MemberInclude<ExtArgs> | null
   /**
    * Filter, which Member to fetch.
    */
@@ -1085,6 +1258,10 @@ export type MemberFindFirstOrThrowArgs<ExtArgs extends runtime.Types.Extensions.
    */
   omit?: Prisma.MemberOmit<ExtArgs> | null
   /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.MemberInclude<ExtArgs> | null
+  /**
    * Filter, which Member to fetch.
    */
   where?: Prisma.MemberWhereInput
@@ -1133,6 +1310,10 @@ export type MemberFindManyArgs<ExtArgs extends runtime.Types.Extensions.Internal
    */
   omit?: Prisma.MemberOmit<ExtArgs> | null
   /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.MemberInclude<ExtArgs> | null
+  /**
    * Filter, which Members to fetch.
    */
   where?: Prisma.MemberWhereInput
@@ -1160,6 +1341,11 @@ export type MemberFindManyArgs<ExtArgs extends runtime.Types.Extensions.Internal
    * Skip the first `n` Members.
    */
   skip?: number
+  /**
+   * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+   * 
+   * Filter by unique combinations of Members.
+   */
   distinct?: Prisma.MemberScalarFieldEnum | Prisma.MemberScalarFieldEnum[]
 }
 
@@ -1175,6 +1361,10 @@ export type MemberCreateArgs<ExtArgs extends runtime.Types.Extensions.InternalAr
    * Omit specific fields from the Member
    */
   omit?: Prisma.MemberOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.MemberInclude<ExtArgs> | null
   /**
    * The data needed to create a Member.
    */
@@ -1223,6 +1413,10 @@ export type MemberUpdateArgs<ExtArgs extends runtime.Types.Extensions.InternalAr
    * Omit specific fields from the Member
    */
   omit?: Prisma.MemberOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.MemberInclude<ExtArgs> | null
   /**
    * The data needed to update a Member.
    */
@@ -1290,6 +1484,10 @@ export type MemberUpsertArgs<ExtArgs extends runtime.Types.Extensions.InternalAr
    */
   omit?: Prisma.MemberOmit<ExtArgs> | null
   /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.MemberInclude<ExtArgs> | null
+  /**
    * The filter to search for the Member to update in case it exists.
    */
   where: Prisma.MemberWhereUniqueInput
@@ -1316,6 +1514,10 @@ export type MemberDeleteArgs<ExtArgs extends runtime.Types.Extensions.InternalAr
    */
   omit?: Prisma.MemberOmit<ExtArgs> | null
   /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.MemberInclude<ExtArgs> | null
+  /**
    * Filter which Member to delete.
    */
   where: Prisma.MemberWhereUniqueInput
@@ -1336,6 +1538,30 @@ export type MemberDeleteManyArgs<ExtArgs extends runtime.Types.Extensions.Intern
 }
 
 /**
+ * Member.transactions
+ */
+export type Member$transactionsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the RoomTransaction
+   */
+  select?: Prisma.RoomTransactionSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the RoomTransaction
+   */
+  omit?: Prisma.RoomTransactionOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.RoomTransactionInclude<ExtArgs> | null
+  where?: Prisma.RoomTransactionWhereInput
+  orderBy?: Prisma.RoomTransactionOrderByWithRelationInput | Prisma.RoomTransactionOrderByWithRelationInput[]
+  cursor?: Prisma.RoomTransactionWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.RoomTransactionScalarFieldEnum | Prisma.RoomTransactionScalarFieldEnum[]
+}
+
+/**
  * Member without action
  */
 export type MemberDefaultArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
@@ -1347,4 +1573,8 @@ export type MemberDefaultArgs<ExtArgs extends runtime.Types.Extensions.InternalA
    * Omit specific fields from the Member
    */
   omit?: Prisma.MemberOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.MemberInclude<ExtArgs> | null
 }

@@ -22,3 +22,8 @@ export * from './enums';
  * 
  */
 export type Member = Prisma.MemberModel
+/**
+ * Model RoomTransaction
+ * 
+ */
+export type RoomTransaction = Prisma.RoomTransactionModel
