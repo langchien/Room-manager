@@ -1,4 +1,4 @@
-"use client"
+'use client'
 
 import { cn } from '@/lib/utils'
 import { Droplet, Home, Trash2, Users } from 'lucide-react'
@@ -22,20 +22,16 @@ export function AppHeader() {
         {/* Logo & Title */}
         <Link
           href='/'
-          className='group flex items-center gap-2.5 transition-all duration-300 hover:opacity-90'
+          className='group flex items-center transition-all duration-300 hover:opacity-90'
         >
-          <div className='relative overflow-hidden rounded-xl border border-neutral-200/40 shadow-md dark:border-neutral-800/40'>
-            <Image
-              width={50}
-              height={24}
-              src='/508 pro max logo.png'
-              alt='508 Pro Max Logo'
-              className='h-9 w-9 object-cover transition-transform duration-500 group-hover:scale-110 group-hover:rotate-6'
-            />
-          </div>
-          <span className='bg-linear-to-r from-indigo-500 via-purple-500 to-pink-500 bg-clip-text font-heading text-lg font-black tracking-wider text-transparent drop-shadow-sm transition-all duration-300 group-hover:tracking-widest'>
-            508 PRO MAX
-          </span>
+          <Image
+            src='/508 pro max logo.png'
+            alt='508 Pro Max Logo'
+            width={290}
+            height={65}
+            priority
+            className='object-contain transition-transform duration-500 group-hover:scale-105'
+          />
         </Link>
 
         {/* Navigation Menu */}
@@ -69,6 +65,3 @@ export function AppHeader() {
     </header>
   )
 }
-
-
-
