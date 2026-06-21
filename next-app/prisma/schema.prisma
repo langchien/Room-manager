@@ -47,6 +47,13 @@ model RoomTransaction {
   status      TransactionStatus @default(PENDING)
   scheduledAt DateTime
   createdAt   DateTime          @default(now())
+  completedAt DateTime?
   note        String?
   member      Member            @relation(fields: [memberId], references: [id])
 }
+
+model AdminConfig {
+  key   String @id
+  value String
+}
+

@@ -18,7 +18,7 @@ export default async function Home() {
             <Activity className='h-3.5 w-3.5 animate-pulse' />
             Live Dashboard
           </span>
-          <h1 className='text-4xl sm:text-5xl lg:text-6xl font-black tracking-tight leading-none text-white drop-shadow-md select-none'>
+          <h1 className='text-4xl leading-none font-black tracking-tight text-white drop-shadow-md select-none sm:text-5xl lg:text-6xl'>
             ROOM 508{' '}
             <span className='bg-linear-to-r from-yellow-300 via-amber-400 to-orange-500 bg-clip-text text-transparent drop-shadow-[0_2px_15px_rgba(245,158,11,0.5)]'>
               PRO MAX

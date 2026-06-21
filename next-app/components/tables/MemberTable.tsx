@@ -7,4 +7,3 @@ import type { Member } from '@/generated/prisma/client'
 export function MembersTable({ members }: { members: Member[] }) {
   return <CustomTable data={members} columns={memberColumns} className='border shadow-md' />
 }
-

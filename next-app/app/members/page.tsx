@@ -79,7 +79,7 @@ export default async function ListMember() {
             </div>
           </CardHeader>
           <CardContent className='flex items-center justify-between'>
-            <p className='text-xs text-muted-foreground'>Thủ quỹ nắm giữ: Khánh Linh</p>
+            <p className='text-xs text-muted-foreground'>Thủ quỹ nắm giữ: Đỗ Khôi</p>
             <Badge
               variant='outline'
               className='border-emerald-500/30 py-0 text-[10px] text-emerald-500'

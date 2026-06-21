@@ -123,4 +123,3 @@ export const memberColumns: ColumnDef<Member>[] = [
     ),
   },
 ]
-
